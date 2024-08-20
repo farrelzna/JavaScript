@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Alert with Countdown</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Tambahkan beberapa gaya untuk alert */
+      .alert {
+        display: none;
+        background-color: #f44336; /* Warna latar belakang merah */
+        color: white; /* Warna teks */
+        padding: 15px;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="button">Munculkan alert</button>
+
+    <div id="hitung" class="alert"></div>
+
+    <script>
+      document.getElementById("button").addEventListener("click", function () {
+        let countdown = 5;
+        const alertBox = document.getElementById("hitung");
+        alertBox.style.display = "block";
+
+        const interval = setInterval(() => {
+          alertBox.textContent = `Warning! Alert akan tertutup dalam ${countdown--}`;
+          if (countdown < 1) {
+            clearInterval(interval);
+            alertBox.style.display = "none";
+          }
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>

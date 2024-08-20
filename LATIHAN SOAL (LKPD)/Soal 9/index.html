@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>status ayah</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="ayah">
+    <label for="statusAyah">Status Ayah</label>
+    <select name="statusAyah" id="statusAyah" onchange="handleStatusChange(this)">
+      <option value="hidup">Masih Hidup</option>
+      <option value="meninggal">Sudah Meninggal</option>
+      <option value="tidakDiketahui">Tidak Diketahui</option>
+    </select>
+
+    <div id="content">
+      <label for="pekerjaanAyah">Pekerjaan</label>
+      <select name="pekerjaanAyah" id="pekerjaanAyah">
+        <option value="karyawan">Karyawan</option>
+        <option value="wirausaha">Wirausaha</option>
+        <option value="tidakDiketahui">Tidak Diketahui</option>
+      </select>
+
+      <label for="pendidikanAyah">Pendidikan</label>
+      <select name="pendidikanAyah" id="pendidikanAyah">
+        <option value="sd">Sekolah Dasar</option>
+        <option value="smp">Sekolah Menengah Pertama</option>
+        <option value="sma">Sekolah Menengah Atas</option>
+      </select>
+
+      <label for="deskripsiPekerjaan">Deskripsi Pekerjaan Ayah</label>
+      <input type="text" id="deskripsiPekerjaan" />
+
+      <label for="penghasilanAyah">Total Penghasilan Ayah</label>
+      <input type="text" id="penghasilanAyah" />
+
+      <div id="detail">
+        <label for="detailAyah">Detail Pekerjaan, Lama Bekerja, Kondisi, dan Kondisi Karir</label>
+        <input type="text" id="detailAyah" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleStatusChange(e) {
+      const detailLabel = e.value === "meninggal"
+        ? "Pekerjaan Ayah Semasa Hidup"
+        : "Detail Pekerjaan, Lama Bekerja, Kondisi, dan Kondisi Karir";
+
+      document.querySelector('#detail label').textContent = detailLabel;
+      document.getElementById("content").style.display = e.value === "tidakDiketahui" ? "none" : "block";
+    }
+
+    // document.getElementById('penghasilanAyah').addEventListener('keyup', (e) => {
+    //   e.target.value = e.target.value ? `Rp. ${e.target.value.replace(/[^,\d]/g, '')}`:'';});
+
+
+    document.getElementById('penghasilanAyah').addEventListener('keyup', (e) => {
+    let input = e.target.value.replace(/[^,\d]/g, ''); // Hanya sisakan angka dan koma
+    e.target.value = input ? `Rp. ${parseInt(input).toLocaleString('id-ID')}` : '';
+});
+  </script>
+</body>
+
+
+</html>

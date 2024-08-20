@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<form id="form">
+    <input class="input" type="text" id="bar" placeholder="Cari sesuatu...">
+    <button class="button" type="submit">Submit</button>
+</form>
+<p id="status">Tidak sedang mencari</p>
+
+<script>
+    // Ambil elemen search bar, form, dan elemen status
+    const searchBar = document.getElementById('bar');
+    const searchForm = document.getElementById('form');
+    const searchStatus = document.getElementById('status');
+
+    // Tambahkan event listener untuk menangani submit form
+    searchForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Mencegah form melakukan submit sebenarnya (refresh halaman)
+        
+        if (searchBar.value.trim() !== "") {
+            searchStatus.textContent = `"${searchBar.value}" Sedang di cari`;
+        } else {
+            searchStatus.textContent = "Tidak sedang mencari";
+        }
+    });
+</script>
+
+</body>
+</html>
