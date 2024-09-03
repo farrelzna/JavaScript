@@ -4,44 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        padding: 20px;
-      }
-
-      img {
-        max-width: 100%;
-        height: auto;
-        transition: opacity 0.5s ease;
-        margin-top: 20px;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div>
-      <label for="imgSelect">PILIH GAMBAR :</label>
-      <select id="imgSelect">
-        <option value="image/1.jpeg">Image 1</option>
-        <option value="image/2.jpeg">Image 2</option>
-        <option value="image/3.jpeg">Image 3</option>
-      </select>
+    <div class="container">
+      <div class="form">
+        <label for="imgSelect">PILIH GAMBAR :</label>
+        <select id="imgSelect">
+          <option value="image/1.jpeg">Image 1</option>
+          <option value="image/2.jpeg">Image 2</option>
+          <option value="image/3.jpeg">Image 3</option>
+        </select>
+          <br>
+        <label for="optSelect">PILIH OPACITY :</label>
+        <select id="optSelect">
+          <option value="1">100%</option>
+          <option value="0.8">80%</option>
+          <option value="0.6">60%</option>
+          <option value="0.4">40%</option>
+          <option value="0.2">20%</option>
+        </select>
+          <br><br>
+        <button onclick="change()">TAMPILKAN</button>
+      </div>
     </div>
-
-    <div>
-      <label for="optSelect">PILIH OPACITY :</label>
-      <select id="optSelect">
-        <option value="1">100%</option>
-        <option value="0.8">80%</option>
-        <option value="0.6">60%</option>
-        <option value="0.4">40%</option>
-        <option value="0.2">20%</option>
-      </select>
-    </div>
-
-    <button onclick="change()">TAMPILKAN</button>
     <br /><br />
-    <img id="display" src="image/1.jpeg" alt="Selected Image" />
+
+    <div class="display">
+      <img id="display" src="image/1.jpeg" alt="Selected Image" />
+    </div>
 
     <script>
       function change() {
@@ -53,5 +44,6 @@
         display.style.opacity = optSelect.value;
     }
     </script>
+
   </body>
 </html>
